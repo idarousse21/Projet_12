@@ -21,12 +21,3 @@ class UserSerializer(ModelSerializer):
         model = User
         fields = ("id", "first_name", "last_name", "email", "password", "user_team")
 
-    # def create(self, validated_data):
-    #     user = User.objects.create_user(**validated_data)
-    #     if validated_data["user_team"] == "1":
-    #         validated_data["is_staff"] = True
-    #         validated_data["is_superuser"] = True
-    #     team = Group.objects.get(name=user.get_user_team_display())
-    #     user.group.add(team)
-    #     user.save()
-    #     return user
