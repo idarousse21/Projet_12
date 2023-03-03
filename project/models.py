@@ -23,12 +23,12 @@ class Contract(models.Model):
     sales_contact = models.ForeignKey(
         to=settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True
     )
-    client = models.ForeignKey(to=Client, on_delete=models.CASCADE)
+    client = models.ForeignKey(to=Client, on_delete=models.CASCADE, null=False)
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
     status = models.BooleanField(default=False)
     amount = models.FloatField(null=True)
-    payment_due = models.DateTimeField()
+    payment_due = models.DateField()
 
 
 class EventStatus(models.Model):
@@ -37,11 +37,12 @@ class EventStatus(models.Model):
 
 
 class Event(models.Model):
-    client = models.ForeignKey(to=Client, on_delete=models.CASCADE)
+    client = models.ForeignKey(to=Client, on_delete=models.CASCADE, null=True)
+    contract = models.ForeignKey(to=Contract, on_delete=models.CASCADE)
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
     support_contact = models.ForeignKey(
-        to=settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True
+        to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True
     )
     event_status = models.ForeignKey(
         to=EventStatus, on_delete=models.SET_NULL, null=True
