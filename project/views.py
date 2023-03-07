@@ -50,9 +50,9 @@ class ClientView(ModelViewSet):
         if self.request.user.user_team == "1":
             return clients
         elif self.request.user.user_team == "2":
-            return clients.filter(sales_contact=self.request.user)
+            return clients.filter(sales_contact=self.request.user).distinct()
         elif self.request.user.user_team == "3":
-            return clients.filter(event__support_contact=self.request.user)
+            return clients.filter(event__support_contact=self.request.user).distinct()
 
     def get_serializer_class(self):
         if self.request.method in CREATE_AND_UPDATE_HTTP_REQUEST:
@@ -78,7 +78,7 @@ class ContractView(ModelViewSet):
         if self.request.user.user_team == "1":
             return contract
         elif self.request.user.user_team == "2":
-            return contract.filter(sales_contact=self.request.user)
+            return contract.filter(sales_contact=self.request.user).distinct()
 
     def get_serializer_class(self):
         if self.request.method in CREATE_AND_UPDATE_HTTP_REQUEST:
@@ -104,7 +104,7 @@ class EventView(ModelViewSet):
         if self.request.user.user_team == "1":
             return event
         elif self.request.user.user_team == "3":
-            return event.filter(support_contact=self.request.user)
+            return event.filter(support_contact=self.request.user).distinct()
 
     def get_serializer_class(self):
         if self.request.method in CREATE_AND_UPDATE_HTTP_REQUEST:
