@@ -42,7 +42,7 @@ class Event(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
     support_contact = models.ForeignKey(
-        to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True
+        to=settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True
     )
     event_status = models.ForeignKey(
         to=EventStatus, on_delete=models.SET_NULL, null=True
