@@ -24,7 +24,6 @@ class ClientPermission(BasePermission):
             return obj.sales_contact == request.user
         elif request.user.user_team == "3":
             return Client.objects.filter(event__support_contact=request.user).exists()
-        
 
 
 class ContractPermission(BasePermission):
@@ -47,7 +46,10 @@ class EventPermission(BasePermission):
             return True
         elif request.user.user_team == "2":
             return request.method == "POST"
-        elif request.user.user_team == "3" and request.method in VIEW_AND_UPDATE_HTTP_REQUEST:
+        elif (
+            request.user.user_team == "3"
+            and request.method in VIEW_AND_UPDATE_HTTP_REQUEST
+        ):
             return True
 
     def has_object_permission(self, request, view, obj):

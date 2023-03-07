@@ -56,7 +56,7 @@ class ContractViewSerializer(ModelSerializer):
 class ContractPostAndUpdateSerializer(MixinValidateSalesContact, ModelSerializer):
     class Meta:
         model = Contract
-        fields = ["id", "sales_contact", "status", "amount", "payment_due", "client"]
+        fields = ["id", "sales_contact", "client", "status", "amount", "payment_due"]
 
     def __init__(self, *args, **kwargs):
         self.user_team = kwargs["context"].pop("user_team")

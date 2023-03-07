@@ -68,9 +68,10 @@ class ClientView(ModelViewSet):
 
 class ContractView(ModelViewSet):
     permission_classes = [IsAuthenticated, ContractPermission]
-    filter_backends = [DjangoFilterBackend, SearchFilter]
-    search_fields = ["client__first_name", "client__last_name", "client__email"]
     serializer_class = ContractViewSerializer
+    filter_backends = [DjangoFilterBackend, SearchFilter]
+    filterset_class = ContractFilter
+    search_fields = ["client__first_name", "client__last_name", "client__email"]
 
     def get_queryset(self):
         contract = Contract.objects.all()
@@ -94,6 +95,9 @@ class ContractView(ModelViewSet):
 class EventView(ModelViewSet):
     permission_classes = [IsAuthenticated, EventPermission]
     serializer_class = EventViewSerializer
+    filter_backends = [DjangoFilterBackend, SearchFilter]
+    filterset_class = EventFilter
+    search_fields = ["client__first_name", "client__last_name", "client__email"]
 
     def get_queryset(self):
         event = Event.objects.all()
