@@ -66,9 +66,9 @@
 <h2 align = "center"> Synchronisation de la database avec PostgreSQL</h2>
     <p>
         Pour synchronisé la database avecl'application il faut:
-    
+    </p>
     <ul>
-        <li> Créer une database sur PostgreSQL avec comme nom "epicevents", un utilisateur avec comme user "idarousse" et comme mot de passe "idarousse123" (sinon vous pouvez modifié le fichier settings de l'application afin qu'il corréspond avec votre base de donnée)</li>
-    </ul>
-       
-   </p>
+        <li> Créer une database sur PostgreSQL avec comme nom "epicevents",
+             un utilisateur avec comme user "idarousse" et comme mot de passe "idarousse123" (sinon vous pouvez modifié le fichier settings de l'application afin qu'il              corréspond avec votre base de donnée)</li>
+    </ul>       
+   
