@@ -1,3 +1,7 @@
 from django.contrib import admin
+from project.models import Client, Contract, Event, EventStatus
 
-# Register your models here.
+admin.site.register(Client)
+admin.site.register(Contract)
+admin.site.register(Event)
+admin.site.register(EventStatus)
